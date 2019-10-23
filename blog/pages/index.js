@@ -4,6 +4,8 @@ import { Row, Col, List, Icon, Avatar } from 'antd'
 import Header from '../components/Header';
 import Author from '../components/Author'
 import Footer from '../components/Footer'
+
+import axios from 'axios'
 // import '../public/style/page/index.css'
 
 const IconText = ({ type, text }) => (
@@ -23,7 +25,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>Home</title>
+        <title>首页</title>
       </Head>
       <Header />
       <Row className="comm-main" type="flex" justify="center">
@@ -33,17 +35,17 @@ const Home = () => {
               header={<div>最新日志</div>}
               itemLayout="vertical"
               dataSource={mylist}
-              renderItem={item => (
-                <List.Item>
-                  <div className="list-title">{item.title}</div>
-                  <div className="list-icon">
-                    <span><Icon type="calendar" /> 2019-06-28</span>
-                    <span><Icon type="folder" /> 视频教程</span>
-                    <span><Icon type="fire" /> 5498人</span>
-                  </div>
-                  <div className="list-context">{item.context}</div>
-                </List.Item>
-              )}
+              // renderItem={item => (
+              //   <List.Item>
+              //     <div className="list-title">{item.title}</div>
+              //     <div className="list-icon">
+              //       <span><Icon type="calendar" /> 2019-06-29</span>
+              //       <span><Icon type="folder" /> 视频教程</span>
+              //       <span><Icon type="fire" /> 5498人</span>
+              //     </div>
+              //     <div className="list-context">{item.context}</div>
+              //   </List.Item>
+              // )}
               renderItem={item => (
                 <List.Item
                   key={item.title}
@@ -80,4 +82,5 @@ const Home = () => {
     </>
   )
 }
+
 export default Home;
