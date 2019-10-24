@@ -19,12 +19,22 @@ class HomeController extends Controller {
     //   'article.view_count as view_count ,' +
     //   '.type.typeName as typeName ' +
     //   'FROM article LEFT JOIN type ON article.type_id = type.Id'
-    
-    let sql = 'SELECT * FROM article LEFT JOIN type ON article.type_id = type.Id'
+    let id = this.ctx.params.id;
+    let sql = 'SELECT * FROM article LEFT JOIN type ON article.type_id = type.id';
 
     const res = await this.app.mysql.query(sql);
     // const res = await this.app.mysql.select("article");
 
+    this.ctx.body = {
+      data: res
+    }
+  }
+
+  async getArticleListById() {
+    let id = this.ctx.params.id;
+    let sql = 'SELECT * FROM article LEFT JOIN type ON article.type_id = type.id WHERE article.id = ' + id;
+
+    const res = await this.app.mysql.query(sql);
     this.ctx.body = {
       data: res
     }

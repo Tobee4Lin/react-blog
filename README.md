@@ -1,2 +1,2 @@
 # react-blog
-a blog made with react and antd
+a blog made with react/next/antd
