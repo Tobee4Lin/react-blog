@@ -10,6 +10,8 @@ import axios from 'axios'
 
 import { changeTime } from '../public/utils/index'
 
+import servicePath from '../config/apiUrl';
+
 const IconText = ({ type, text }) => (
   <span>
     <Icon type={type} style={{ marginRight: 8 }} />
@@ -59,30 +61,6 @@ const Home = (props) => {
                   <div className="list-context">{item.introduce}</div>
                 </List.Item>
               )}
-            // renderItem={item => (
-            //   <List.Item
-            //     key={item.title}
-            //     actions={[
-            //       <IconText type="star-o" text="156" key="list-vertical-star-o" />,
-            //       <IconText type="like-o" text="156" key="list-vertical-like-o" />,
-            //       <IconText type="message" text="2" key="list-vertical-message" />
-            //     ]}
-            //     extra={
-            //       <img
-            //         width={272}
-            //         alt="logo"
-            //         src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
-            //       />
-            //     }
-            //   >
-            //     <List.Item.Meta
-            //       avatar={<Avatar src={item.avatar} />}
-            //       title={<p>{item.title}</p>}
-            //       description={item.subTitle}
-            //     />
-            //     {item.content}
-            //   </List.Item>
-            // )}
             />
           </div>
         </Col>
@@ -98,7 +76,7 @@ const Home = (props) => {
 
 Home.getInitialProps = async () => {
   const promise = new Promise(resolve => {
-    axios("http://127.0.0.1:7001/default/getArticleList")
+    axios(servicePath.getArticleList)
       .then(res => {
         resolve(res.data)
       })

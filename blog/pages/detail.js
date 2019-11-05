@@ -16,6 +16,8 @@ import axios from 'axios';
 import Tocify from '../components/tocify.tsx'
 import { changeTime } from '../public/utils/index'
 
+import servicePath from '../config/apiUrl';
+
 const Detail = (props) => {
   const tocify = new Tocify()
   const renderer = new marked.Renderer();
@@ -97,7 +99,7 @@ const Detail = (props) => {
 Detail.getInitialProps = async (context) => {
   let id = context.query.id;
   const promise = new Promise(resolve => {
-    axios("http://127.0.0.1:7001/default/getArticleListById/" + id)
+    axios(servicePath.getArticleById + id)
       .then(res => {
         resolve(res.data.data[0])
       })
